@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import './css/App.css'
+import SearchBar from './components/SearchBar'
+import getGifs from './services/getGifs'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [gifs, setGifs] = useState([])
+
+	useEffect(() => {
+		getGifs({ keyword: 'panda' }).then((data) => setGifs(data))
+	}, [])
+
+	return (
+		<div className='App'>
+			<header>
+				<h1>Gif Search Engine</h1>
+				<SearchBar />
+			</header>
+			<section>
+				{gifs.map((singleGif) => (
+					<img key={singleGif.id} alt='Gif' src={singleGif.images.downsized_medium.url} />
+				))}
+			</section>
+		</div>
+	)
 }
 
-export default App;
+export default App

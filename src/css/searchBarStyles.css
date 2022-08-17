@@ -1,0 +1,14 @@
+#searchBar {
+	background-color: aqua;
+	border: none;
+	border-radius: 5px;
+	height: 25px;
+	width: 300px;
+}
+
+#buttonSeach {
+	border: none;
+	border-radius: 0.5rem;
+	height: 2.5rem;
+	width: 8rem;
+}
