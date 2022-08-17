@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './css/App.css'
 import SearchBar from './components/SearchBar'
-import getGifs from './services/getGifs'
+import ListOfGif from './components/ListOfGif'
 
 function App() {
-	const [gifs, setGifs] = useState([])
+	// const [gifs, setGifs] = useState([])
 
-	useEffect(() => {
-		getGifs({ keyword: 'panda' }).then((data) => setGifs(data))
-	}, [])
+	// useEffect(() => {
+	// 	getGifs({ keyword: 'programing' }).then((data) => setGifs(data))
+	// }, [])
 
 	return (
 		<div className='App'>
@@ -17,9 +17,7 @@ function App() {
 				<SearchBar />
 			</header>
 			<section>
-				{gifs.map((singleGif) => (
-					<img key={singleGif.id} alt='Gif' src={singleGif.images.downsized_medium.url} />
-				))}
+				<ListOfGif keyword='Venezuela' />
 			</section>
 		</div>
 	)
