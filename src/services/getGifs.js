@@ -1,7 +1,7 @@
 const apiKey = '06v3SHJy9yqOvMko9iFaeanH99OPm23j'
 
 export default async function getGifs({ keyword = 'trending' } = {}) {
-	const url = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=10`
+	const url = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=100`
 
 	return await fetch(url)
 		.then((response) => response.json())
