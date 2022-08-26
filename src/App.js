@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom'
 import './css/App.css'
 import './css/searchBarStyles.css'
 import SearchBar from './components/SearchBar'
@@ -7,6 +7,7 @@ import ListOfGif from './components/ListOfGif'
 
 function App() {
 	// const [gifs, setGifs] = useState([])
+	const [palabra, setPalabra] = useState('')
 
 	// useEffect(() => {
 	// 	getGifs({ keyword: 'programing' }).then((data) => setGifs(data))
@@ -18,7 +19,8 @@ function App() {
 				<main>
 					<header>
 						<h1>Gif Search Engine</h1>
-						<SearchBar />
+						<h2>{palabra}</h2>
+						<SearchBar setPalabra={setPalabra} />
 						<nav id='mainMenu'>
 							<ul>
 								<li>
@@ -43,11 +45,10 @@ function App() {
 						{/* <ListOfGif keyword='Canada' /> */}
 						<div className='gifContainer'>
 							<Routes>
-								<Route path='/' element={<ListOfGif keyword='trending' />}></Route>
-
-								<Route path='/' element={<ListOfGif keyword='canada' />} />
+								<Route path='/' element={<ListOfGif keyword={palabra} />}></Route>
 								<Route path='/sports' element={<ListOfGif keyword='sports' />} />
 								<Route path='/food' element={<ListOfGif keyword='food' />} />
+								<Route path='/gif/:keyword' element={<ListOfGif keyword={palabra} />} />
 							</Routes>
 						</div>
 					</section>
